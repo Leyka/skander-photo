@@ -1,0 +1,20 @@
+{
+  "name": "skander-photo",
+  "private": "true",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html --public-url ./"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.22",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.9.6"
+  }
+}

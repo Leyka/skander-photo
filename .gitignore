@@ -1,0 +1,7 @@
+# Node.js / Parcel
+node_modules/
+dist/
+.cache
+
+# Files
+.env
