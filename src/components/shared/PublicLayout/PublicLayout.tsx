@@ -1,11 +1,13 @@
 import React from 'react';
 import { Navbar } from './Navbar';
+import './PublicLayout.scss';
 
 export const PublicLayout = ({ children }) => {
   return (
-    <div>
+    <div className="public">
       <Navbar />
-      <div>{children}</div>
+      <main>{children}</main>
+      <footer>Copyright © {new Date().getFullYear()} Skander Kchouk</footer>
     </div>
   );
 };

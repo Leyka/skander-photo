@@ -1,0 +1,13 @@
+.public__navbar {
+  display: grid;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .public__navbar {
+    justify-content: space-between;
+    grid-auto-flow: column;
+  }
+}
