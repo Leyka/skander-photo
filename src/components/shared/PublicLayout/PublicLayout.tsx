@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from './Navbar';
 import './PublicLayout.scss';
+import { firebaseStorage } from '../../../firebase';
 
 export const PublicLayout = ({ children }) => {
   return (

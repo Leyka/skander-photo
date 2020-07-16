@@ -1,13 +1,35 @@
 .public__navbar {
   display: grid;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 10px;
+
+  .logo {
+    width: 200px;
+    margin-bottom: 10px;
+  }
+
+  .menu {
+    margin-top: 20px;
+
+    a {
+      font-size: 18px;
+      margin-right: 30px;
+    }
+
+    a:hover {
+      border-bottom: 1px solid #000;
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
   .public__navbar {
     justify-content: space-between;
     grid-auto-flow: column;
+  }
+
+  .menu {
+    margin-top: 0;
   }
 }
