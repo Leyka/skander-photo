@@ -1,10 +1,10 @@
 # skander-photo
 
-Skander Photography portfolio built with React and Firebase.
+Skander Photography portfolio built with React and Firebase because of free tier hosting :sparkles:
 
 ## Configure Firebase
 
-Create `.env` file on root :
+Create `.env` file on root and fill credentials:
 
 ```
 FIREBASE_KEY=
@@ -17,4 +17,4 @@ FIREBASE_APP_ID=
 FIREBASE_MEASUREMENT_ID=
 ```
 
-Parcel will be able to inject env. variables automatically.
+[Parcel](https://parceljs.org) will be able to inject env. variables automatically on build time.

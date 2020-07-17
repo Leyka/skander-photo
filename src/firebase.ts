@@ -23,3 +23,4 @@ export const firebasePersistenceType = firebase.auth.Auth.Persistence;
 export const firebaseDb = firebase.firestore();
 // Storage
 export const firebaseStorage = firebase.storage();
+export const firebaseTaskEvent = firebase.storage.TaskEvent;
