@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Navbar } from './Navbar';
 import './PublicLayout.scss';
 import { firebaseStorage } from '../../../firebase';
 
-export const PublicLayout = ({ children }) => {
+export const PublicLayout: FC = ({ children }) => {
   return (
     <div className="public">
       <Navbar />

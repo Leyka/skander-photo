@@ -5,7 +5,7 @@ import './Navbar.scss';
 
 export const Navbar: FC = () => {
   const logoUrl =
-    'https://firebasestorage.googleapis.com/v0/b/skander-photography.appspot.com/o/logo.png?alt=media&token=ead405d6-dc47-40be-9eb8-f54d74b1fcb4';
+    'https://firebasestorage.googleapis.com/v0/b/skander-photo.appspot.com/o/logo.png?alt=media';
 
   return (
     <nav className="public__navbar">

@@ -1,8 +1,8 @@
 export module Routes {
   export const Gallery = '/';
-  export const About = '/';
-  export const Contact = '/';
+  export const About = '/about';
+  export const Contact = '/contact';
   export const Login = '/lg';
   export const AdminHome = '/admin';
-  export const AdminImport = '/admin/import';
+  export const AdminUpload = '/admin/upload';
 }
