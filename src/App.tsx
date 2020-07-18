@@ -3,7 +3,7 @@ import { Gallery } from './components/Gallery/Gallery';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { Routes } from './routes';
 import { UserProvider } from './providers/UserProvider';
-import { Login } from './components/auth/Login';
+import { Login } from './components/Login/Login';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { PicturesManager } from './components/PicturesManager/PicturesManager';
 import { PicturesUploader } from './components/PicturesUploader/PicturesUploader';

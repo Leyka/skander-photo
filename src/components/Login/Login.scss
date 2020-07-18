@@ -1,0 +1,25 @@
+.login-container {
+  font-family: Roboto, serif;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: 1fr 1fr;
+
+  img {
+    width: 180px;
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+
+  input,
+  button {
+    margin-bottom: 10px;
+  }
+}
