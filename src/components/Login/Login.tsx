@@ -7,10 +7,15 @@ import { Redirect } from 'react-router';
 import { Routes } from '../../routes';
 import { LOGO_URL } from '../../shared/constants';
 
+interface LoginData {
+  email: string;
+  password: string;
+}
+
 export const Login = ({ history }) => {
   const { register, handleSubmit } = useForm();
 
-  const login = async (data) => {
+  const login = async (data: LoginData) => {
     const { email, password } = data;
     try {
       await firebaseAuth.setPersistence(firebasePersistenceType.LOCAL);
@@ -46,7 +51,7 @@ export const Login = ({ history }) => {
           className="input"
           required
         />
-        <button type="submit" className="button">
+        <button type="submit" className="button fill">
           Login
         </button>
       </form>
