@@ -1,15 +1,16 @@
 .login-container {
   font-family: Roboto, serif;
+  width: 300px;
   height: 100vh;
+  margin: 0 auto;
   display: grid;
-  justify-content: center;
   align-items: center;
   grid-template-rows: 1fr 1fr;
 
   img {
     width: 180px;
     align-self: flex-end;
-    margin-bottom: 10px;
+    margin: 10px auto;
   }
 }
 

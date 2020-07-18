@@ -1,0 +1,31 @@
+// Variables
+$primary: #232323;
+$secondary: #403f3f;
+
+a,
+a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+.button {
+  padding: 10px;
+  background-color: $primary;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: 300;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: $secondary;
+}
+
+.input {
+  padding: 8px;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 300;
+}

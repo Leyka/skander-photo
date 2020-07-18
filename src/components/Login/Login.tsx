@@ -35,6 +35,7 @@ export const Login = ({ history }) => {
           placeholder="Email"
           autoFocus
           ref={register}
+          className="input"
           required
         />
         <input
@@ -42,9 +43,12 @@ export const Login = ({ history }) => {
           name="password"
           placeholder="Password"
           ref={register}
+          className="input"
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="button">
+          Login
+        </button>
       </form>
     </div>
   );
