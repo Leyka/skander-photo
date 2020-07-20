@@ -37,18 +37,10 @@ export class PictureService {
     return picture;
   }
 
-  static edit(
-    id: string,
-    isVisible: boolean,
-    category?: string,
-    title?: string,
-    tags?: string
-  ) {
-    this.pictures.doc(id).update({
-      category: capitalize(category),
-      title,
-      tags,
-      isVisible,
+  static edit(picture: Picture) {
+    this.pictures.doc(picture.id).update({
+      ...picture,
+      category: capitalize(picture.category),
     });
   }
 

@@ -1,16 +1,19 @@
 .admin-container {
-  font-family: Roboto, sans-serif;
   width: 100%;
   min-width: 400px;
   height: 100vh;
   display: grid;
   grid-template-rows: 80px 1fr;
-  row-gap: 20px;
 
   nav,
   main {
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  header {
+    margin-top: 0;
+    margin-bottom: 30px;
   }
 }
 

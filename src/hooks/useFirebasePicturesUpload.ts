@@ -7,14 +7,14 @@ import { Picture } from './../shared/types';
 import { filterAsync } from '../shared/utils';
 
 interface Props {
-  files: FileList;
+  files: FileList | null;
   onUploadStart(): void;
   onUploadEnd(): void;
+  addPictureToStore(picture: Picture): void;
 }
 
 export const useFirebasePicturesUpload = (props: Props) => {
-  const { files, onUploadStart, onUploadEnd } = props;
-  const [uploadedPictures, setUploadedPictures] = useState<Picture[]>([]);
+  const { files, onUploadStart, onUploadEnd, addPictureToStore } = props;
   let completedUploaded;
 
   const handleFirebaseUpload = async () => {
@@ -43,10 +43,10 @@ export const useFirebasePicturesUpload = (props: Props) => {
     uploadTask.on(firebaseTaskEvent.STATE_CHANGED, {
       complete: async () => {
         const url = await firebaseStorage.ref('photos').child(file.name).getDownloadURL();
-        // New entry in database
+        // New entry in database and store
         const category = getCategoryFromFileName(file.name);
         const picture = await PictureService.add(url, file.name, category);
-        setUploadedPictures([...uploadedPictures, picture]);
+        addPictureToStore(picture);
         // Was it our last picture to upload?
         completedUploaded++;
         if (completedUploaded === totalNewFiles) {
@@ -58,5 +58,5 @@ export const useFirebasePicturesUpload = (props: Props) => {
     });
   };
 
-  return { handleFirebaseUpload, uploadedPictures };
+  return { handleFirebaseUpload };
 };

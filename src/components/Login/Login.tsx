@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form';
 import { useUserStore } from '../../providers/UserProvider';
 import { Redirect } from 'react-router';
 import { Routes } from '../../routes';
-import { LOGO_URL } from '../../shared/constants';
+//@ts-ignore
+import logo from '../../assets/logo.png';
 
 interface LoginData {
   email: string;
@@ -32,7 +33,7 @@ export const Login = ({ history }) => {
 
   return (
     <div className="login-container">
-      <img src={LOGO_URL} alt="logo" />
+      <img src={logo} alt="logo" />
       <form className="login-form" onSubmit={handleSubmit(login)}>
         <input
           type="email"
@@ -40,7 +41,7 @@ export const Login = ({ history }) => {
           placeholder="Email"
           autoFocus
           ref={register}
-          className="input"
+          className="form-input"
           required
         />
         <input
@@ -48,10 +49,10 @@ export const Login = ({ history }) => {
           name="password"
           placeholder="Password"
           ref={register}
-          className="input"
+          className="form-input"
           required
         />
-        <button type="submit" className="button fill">
+        <button type="submit" className="btn btn-primary">
           Login
         </button>
       </form>

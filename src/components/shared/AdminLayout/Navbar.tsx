@@ -18,7 +18,7 @@ export const Navbar: FC<Props> = ({ onLogOutClick }) => {
         <Link to={Routes.Gallery}>Gallery</Link>
       </section>
       <section>
-        <button onClick={onLogOutClick} className="button outline logout">
+        <button onClick={onLogOutClick} className="btn logout">
           Log out
         </button>
       </section>
