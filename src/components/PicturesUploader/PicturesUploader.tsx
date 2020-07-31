@@ -1,8 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { AdminLayout } from '../shared/AdminLayout/AdminLayout';
 import { useFirebasePicturesUpload } from '../../hooks/useFirebasePicturesUpload';
-import './PicturesUploader.scss';
 import { Picture } from '../../shared/types';
+import { PictureEditor } from '../shared/PictureEditor/PictureEditor';
+import './PicturesUploader.scss';
+import { PictureService } from '../../services/picture-service';
+import { firebaseStorage } from '../../firebase';
 
 export const PicturesUploader = () => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +29,10 @@ export const PicturesUploader = () => {
     setUploadedPictures((pictures) => [...pictures, picture]);
   };
 
-  const deletePictureFromStore = (id: string) => {};
+  const removePictureFromStore = (pictureId: string) => {
+    const newUploadedPictures = uploadedPictures.filter((p) => p.id !== pictureId);
+    setUploadedPictures(newUploadedPictures);
+  };
 
   const { handleFirebaseUpload } = useFirebasePicturesUpload({
     files,
@@ -34,6 +40,17 @@ export const PicturesUploader = () => {
     onUploadEnd,
     addPictureToStore,
   });
+
+  const handlePictureSave = (picture: Picture) => {
+    PictureService.edit(picture);
+    removePictureFromStore(picture.id);
+  };
+
+  const handlePictureDelete = (id: string, fileName: string) => {
+    PictureService.delete(id);
+    firebaseStorage.ref(`/photos/${fileName}`).delete(); // Delete from storage
+    removePictureFromStore(id);
+  };
 
   return (
     <AdminLayout title="Upload Pictures">
@@ -52,11 +69,25 @@ export const PicturesUploader = () => {
           className={`btn-upload btn btn-primary input-group-btn ${
             loading ? 'loading' : ''
           }`}
-          style={{ height: 'inherit' }}
         >
           Upload
         </button>
       </div>
+      {uploadedPictures.length > 0 &&
+        uploadedPictures.map((picture) => (
+          <PictureEditor
+            key={picture.id}
+            id={picture.id}
+            fileName={picture.fileName}
+            url={picture.url}
+            category={picture.category}
+            isVisible={picture.isVisible}
+            title={picture.title}
+            onSaveClick={handlePictureSave}
+            onDeleteClick={handlePictureDelete}
+            isNewImport
+          />
+        ))}
     </AdminLayout>
   );
 };

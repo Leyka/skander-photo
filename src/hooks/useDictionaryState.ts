@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface ObjectWithID {
   id: string;
@@ -13,7 +13,7 @@ export const useDictionaryState = <T extends ObjectWithID>() => {
 
   const addOne = (obj: T) => {
     dict[obj.id] = obj;
-    setDict(dict);
+    setDict({ ...dict });
   };
 
   const addMany = (arrayObjs: T[]) => arrayObjs.forEach(addOne);
@@ -21,12 +21,15 @@ export const useDictionaryState = <T extends ObjectWithID>() => {
   const remove = (id: string) => {
     const copy = { ...dict };
     delete copy[id];
-    setDict(copy);
+    setDict({ ...copy });
   };
 
   const update = (obj: T) => {
-    dict[obj.id] = obj;
-    setDict(dict);
+    dict[obj.id] = {
+      ...dict[obj.id],
+      obj,
+    };
+    setDict({ ...dict });
   };
 
   const getOne = (id) => dict[id];

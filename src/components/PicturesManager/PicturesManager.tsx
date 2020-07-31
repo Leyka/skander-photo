@@ -7,6 +7,7 @@ import { PictureEditor } from '../shared/PictureEditor/PictureEditor';
 import { Picture } from '../../shared/types';
 import { useDictionaryState } from '../../hooks/useDictionaryState';
 import { PictureService } from '../../services/picture-service';
+import { firebaseStorage } from '../../firebase';
 
 export const PicturesManager = () => {
   const {
@@ -24,8 +25,9 @@ export const PicturesManager = () => {
     update(picture);
   };
 
-  const handlePictureDelete = (id: string) => {
+  const handlePictureDelete = (id: string, fileName: string) => {
     PictureService.delete(id);
+    firebaseStorage.ref(`/photos/${fileName}`).delete(); // Delete from storage
     remove(id);
   };
 
@@ -41,7 +43,7 @@ export const PicturesManager = () => {
           <p className="empty-subtitle">Click the button to import new photos.</p>
           <div className="empty-action">
             <Link to={Routes.AdminUpload} className="btn btn-primary">
-              Upload Photos
+              Upload Pictures
             </Link>
           </div>
         </div>
@@ -49,19 +51,17 @@ export const PicturesManager = () => {
       {!loading &&
         !isEmpty() &&
         getPicturesArray().map((picture) => (
-          <div key={picture.id}>
-            <PictureEditor
-              id={picture.id}
-              fileName={picture.fileName}
-              url={picture.url}
-              category={picture.category}
-              isVisible={picture.isVisible}
-              title={picture.title}
-              onSaveClick={handlePictureSave}
-              onDeleteClick={handlePictureDelete}
-            />
-            <div className="divider"></div>
-          </div>
+          <PictureEditor
+            key={picture.id}
+            id={picture.id}
+            fileName={picture.fileName}
+            url={picture.url}
+            category={picture.category}
+            isVisible={picture.isVisible}
+            title={picture.title}
+            onSaveClick={handlePictureSave}
+            onDeleteClick={handlePictureDelete}
+          />
         ))}
     </AdminLayout>
   );
